@@ -17,8 +17,17 @@ module Dotloop
       attr_accessor :client
       attr_accessor :profile_id
 
+      def initialize(attrs = {})
+        super(attrs)
+
+        if attrs[:details].present?
+          loop_detail = Dotloop::LoopDetail.new(attrs[:details]).details
+          @detail = Dotloop::Models::LoopDetail.new(loop_detail)
+        end
+      end
+
       def detail
-        client.Loop.detail(profile_id: profile_id, loop_id: id)
+        @detail ||= client.Loop.detail(profile_id: profile_id, loop_id: id)
       end
 
       def folders
