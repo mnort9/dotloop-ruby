@@ -42,6 +42,10 @@ module Dotloop
         client.Tasklist.all(profile_id: profile_id, loop_id: id)
       end
 
+      def activities
+        client.Activity.all(profile_id: profile_id, loop_id: id)
+      end
+
       def update(data)
         client.Loop.update(profile_id: profile_id, loop_id: id, params: data)
       end

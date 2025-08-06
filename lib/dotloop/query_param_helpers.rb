@@ -24,6 +24,11 @@ module Dotloop
       options[:profile_id].to_i
     end
 
+    def loop_id(options)
+      raise 'loop_id is required' unless options[:loop_id]
+      options[:loop_id].to_i
+    end
+
     def batch_number(options)
       options[:batch_number].to_i
     end

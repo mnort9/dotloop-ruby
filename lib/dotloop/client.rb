@@ -78,6 +78,10 @@ module Dotloop
       @account ||= Dotloop::Account.new(client: self).find
     end
 
+    def Activity
+      @activity ||= Dotloop::Activity.new(client: self)
+    end
+
     def Document
       @document ||= Dotloop::Document.new(client: self)
     end
